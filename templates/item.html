@@ -1,9 +1,79 @@
 <html>
 <head>
-    <title>Item Details</title>
-    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content=
+      "width=device-width, initial-scale=1.0">
+    <style>
+        h1 {
+    color: green;
+}
+table, th, td, tr {
+  border:1px solid black;
+  align-items: center;
+  text-align: center;
+  border-collapse: collapse;
+
+}
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+    </style>
+    <title>Asteroid Monitor!!</title>
 </head>
 <body>
-    <h1>Item ID: {{ id }}</h1>
+    <div>
+    <div id="piechart">
+        <h1> Asteroid Request Tracker</h1>
+        <table style="width:100%; align-items: center;">
+            <tr>
+                <th> Request Type</th>
+                <th> Count</th>
+            </tr>
+            <tr>
+                <td> Create </td>
+                <td> {{create}}</td>
+            </tr>
+            <tr>
+                <td> Read </td>
+                <td> {{read}}</td>
+            </tr>
+            <tr>
+                <td> Update </td>
+                <td> {{update}}</td>
+            </tr>
+            <tr>
+                <td> Delete </td>
+                <td> {{delete}}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h1> Dangerous Asteroids </h1>
+        <table style="width:100%">
+            <tr> 
+                <th>Name</th>
+                <th>Size</th>
+                <th>Type</th>
+                <th>Location</th>
+                <th>Probability of Collission</th>
+                <th>Distance</th>
+            </tr>
+            {% for dict_item in lst %}
+      <tr>
+          <td>{{dict_item['name']}}</td> 
+          <td>{{dict_item['size']}}</td> 
+          <td>{{dict_item['type']}}</td> 
+          <td>{{dict_item['location']}}</td> 
+          <td>{{dict_item['probability_of_collision']}}</td> 
+          <td>{{dict_item['distance']}}</td> 
+      </tr>
+{% endfor %}
+        </table>
+    </div>
+    </div>
 </body>
 </html>
